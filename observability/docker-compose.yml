@@ -16,6 +16,18 @@ services:
       - ./config/tempo/tempo.yaml:/etc/tempo.yaml
     command: ["-config.file=/etc/tempo.yaml"]
 
+    
+  mimir:
+    image: grafana/mimir:latest
+    container_name: mimir
+    restart: always
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./config/mimir/mimir.yaml:/etc/mimir.yaml
+    command: ["-config.file=/etc/mimir.yaml"]
+
+
   promtail:
     image: grafana/promtail:latest
     container_name: promtail
