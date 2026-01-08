@@ -14,7 +14,13 @@ services:
     restart: always
     volumes:
       - ./config/tempo/tempo.yaml:/etc/tempo.yaml
-    command: ["-config.file=/etc/tempo.yamle"]
+    command: ["-config.file=/etc/tempo.yaml"]
+
+  promtail:
+    image: grafana/promtail:latest
+    container_name: promtail
+    volumes:
+      - /var/log
     
 
   grafana:
